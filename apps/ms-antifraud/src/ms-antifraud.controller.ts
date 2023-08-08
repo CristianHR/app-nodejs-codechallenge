@@ -1,18 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
 import { MsAntifraudService } from './ms-antifraud.service';
-import { EventPattern } from '@nestjs/microservices';
+import { EventPattern, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class MsAntifraudController {
   constructor(private readonly msAntifraudService: MsAntifraudService) {}
 
-  @Get()
-  getHello(): string {
-    return this.msAntifraudService.getHello();
-  }
-
-  @EventPattern('transaction_create')
-  CreateTransaction(data: any): void {
-    console.log('este es un evento entrante en antifraud: ', data);
+  @EventPattern('transaction_created_event')
+  CreatedTransactionValidate(@Payload() data: any): void {
+    console.log(
+      'este es un evento transaction_created_event en antifraud: ',
+      data,
+    );
+    this.msAntifraudService.validateValue(data);
   }
 }

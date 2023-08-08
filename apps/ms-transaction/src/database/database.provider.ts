@@ -24,7 +24,7 @@ export const DatabaseProvider: DynamicModule = TypeOrmModule.forRootAsync({
       synchronize: isLocaloOrDevelopment,
       entities: [Transaction, TransactionStatus, TransactionType],
       logging: config.get('DB_LOGGING'),
-      seeds: [InitSeeder],
+      //seeds: [InitSeeder],
     };
   },
 });

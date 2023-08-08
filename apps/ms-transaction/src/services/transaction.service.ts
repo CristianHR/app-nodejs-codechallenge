@@ -18,14 +18,17 @@ export class TransactionService {
     @Inject('MS_ANTIFRAUD') private readonly clientAntifraud: ClientProxy,
   ) {}
   async save(data: CreateTransactionDto) {
-    console.log('consulting service transaction');
-    this.clientAntifraud.emit('transaction_create', data);
-    console.log('send queue');
-
+    console.log('send queue transaction_create');
     const transaction: Transaction = await this.transactionRepository.create(
       data,
     );
-    return this.transactionRepository.save(transaction);
+    const transactionCreated = await this.transactionRepository.save(
+      transaction,
+    );
+    console.log('emit transaction_created_event:', transactionCreated);
+
+    this.clientAntifraud.emit('transaction_created_event', transactionCreated);
+    return transactionCreated;
   }
 
   async findAll(): Promise<Transaction[]> {
@@ -44,8 +47,8 @@ export class TransactionService {
     return this.transactionTypeRepository.findOne({ where: { id } });
   }
 
-  /*
   async update(data: UpdateTransactionDto) {
+    console.log('data recibido en transactionService.update:', data);
     const transaction: Transaction = await this.transactionRepository.preload({
       ...data,
     });
@@ -55,5 +58,5 @@ export class TransactionService {
     }
 
     return transaction;
-  }*/
+  }
 }
