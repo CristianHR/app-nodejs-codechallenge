@@ -21,7 +21,8 @@ Every transaction with a value greater than 1000 should be rejected.
 ```
 
 # Tech Stack
-**Docker + Node.js + TypeScript + NestJS + TypeORM + TypeGraphQL + TSLint + PotgresSQL + Kafka**
+**Docker + Node.js + TypeScript + NestJS + TypeORM + TypeGraphQL + TSLint + PotgresSQL + Kafka**.
+
 Next release: Jest 
 
 
@@ -47,10 +48,10 @@ $ NPM --version
 
 ### How to run
 
-```
 From the terminal, enter the folder where you want to keep the project and perform the following steps:
+```
 
-in this section we initialize the database and kafka
+In this section we initialize the database and kafka
 $ git clone https://github.com/CristianHR/app-nodejs-codechallenge.git
 $ cd app-nodejs-codechallenge
 $ cp .env.example .env
