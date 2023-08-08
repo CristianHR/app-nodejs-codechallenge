@@ -8,7 +8,6 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { TransactionStatus } from './transactionStatus.entity';
-import { Status } from '../commons/enums';
 import { TransactionType } from './transactionType.entity';
 
 @Entity()

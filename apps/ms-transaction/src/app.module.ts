@@ -14,7 +14,6 @@ import {
   TransactionStatusResolver,
   TransactionTypeResolver,
 } from './resolvers';
-import { TransactionModule } from './transaction/transaction.module';
 import {
   TransactionService,
   TransactionStatusService,
@@ -31,7 +30,6 @@ import {
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       //autoSchemaFile: true,
     }),
-    TransactionModule,
     TypeOrmModule.forFeature([Transaction, TransactionStatus, TransactionType]),
     ClientsModule.register([
       {
