@@ -17,7 +17,7 @@ export class TransactionType {
   id: number;
 
   @Field()
-  @Column({ nullable: false, default: 'PENDING' })
+  @Column({ nullable: false, unique: true })
   name: 'PENDING' | 'APPROVED' | 'REJECTED';
 
   @Field()
